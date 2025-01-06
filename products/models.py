@@ -18,6 +18,6 @@ class Product(models.Model):
     created_date = models.DateField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     
-    #Función que nos permitira que se muestren los nombres de los productos. 
+    #Función que nos permitira que se muestren los nombres de los productos junto a la marca. 
     def __str__(self):
-        return self.name
+        return f'{self.name} | {self.brand}'
