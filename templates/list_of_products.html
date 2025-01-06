@@ -16,66 +16,27 @@
     <body>
         <div class="container">
             <div class="row">
+                {% for product in products %}
                 <div class="col-3">
                     <div class="card">
-                        <img src="https://pbs.twimg.com/media/FGBYPmtX0AguaV2.jpg"
+                        <img src="{{product.image.url}}"
                              class="card-img-top float-start">
                         <div class="card-body">
-                            <h5 class="card-title">Producto 1</h5>
+                            <h5 class="card-title">{{product.name}}</h5>
                             <div class="price-container">
                                 <p class="card-title">
-                                    <s>5 USD</s>
+                                    <s>{{product.discount}} Discount</s>
                                 </p>
-                                <p class="card-title product-price">3 USD</p>
+                                <p class="card-title product-price">{{product.price}} USD</p>
                             </div>
                             <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Accusantium eum molestiae libero labore distinctio error
-                                eius iure sunt vitae, ratione omnis quas reprehenderit vel
-                                beatae, nobis, voluptatem itaque ad earum.
+                                {{product.description}}
                             </p>
                             <a class="btn btn-tomato" href="/">Leer más</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
-                    <div class="card">
-                        <img src="https://pbs.twimg.com/media/FGBYPmtX0AguaV2.jpg"
-                             class="card-img-top float-start">
-                        <div class="card-body">
-                            <h5 class="card-title">Producto 2</h5>
-                            <div class="price-container">
-                                <p class="card-title product-price">3 USD</p>
-                            </div>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Accusantium eum molestiae libero labore distinctio error
-                                eius iure sunt vitae, ratione omnis quas reprehenderit vel
-                                beatae, nobis, voluptatem itaque ad earum.
-                            </p>
-                            <a class="btn btn-tomato" href="/">Leer más</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="card">
-                        <img src="https://pbs.twimg.com/media/FGBYPmtX0AguaV2.jpg"
-                             class="card-img-top float-start">
-                        <div class="card-body">
-                            <h5 class="card-title">Producto 3</h5>
-                            <div class="price-container">
-                                <p class="card-title product-price">3 USD</p>
-                            </div>
-                            <p class="card-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Accusantium eum molestiae libero labore distinctio error
-                                eius iure sunt vitae, ratione omnis quas reprehenderit vel
-                                beatae, nobis, voluptatem itaque ad earum.
-                            </p>
-                            <a class="btn btn-tomato" href="/">Leer más</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor%}
             </div>
         </div>
     </body>
