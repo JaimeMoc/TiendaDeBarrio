@@ -8,4 +8,8 @@ def index(request):
     
     return render(request, 'List_of_products.html', 
                   {'products': products})
-    
+
+def get_product(request, id):
+    product = Product.objects.get(id=id)
+    return render(request, 'show_product.html', 
+                  {'product': product})
