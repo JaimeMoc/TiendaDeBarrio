@@ -30,7 +30,7 @@ class Product(models.Model):
   
 #Creación de la clase "Brand" en donde definiremos sus atributos.   
 class Brand(models.Model):
-    text = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
     description = models.TextField(null=True, blank=True)
     
     logo = models.ImageField(
