@@ -6,10 +6,10 @@ def index(request):
     #Logica 
     products = Product.objects.all()
     
-    return render(request, 'List_of_products.html', 
+    return render(request, 'products/List_of_products.html', 
                   {'products': products})
 
 def get_product(request, id):
     product = Product.objects.get(id=id)
-    return render(request, 'show_product.html', 
+    return render(request, 'products/show_product.html', 
                   {'product': product})
