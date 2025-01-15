@@ -43,3 +43,27 @@ class Brand(models.Model):
     
     def __str__(self):
         return self.name
+
+#Creación de la clase "Comments" en donde definiremos la opción para que el usuario pueda publicar comentarios.
+class Comment(models.Model):
+    product = models.ForeignKey(
+        'products.Product', 
+        on_delete=models.CASCADE,
+        related_name='comments'
+        )
+    
+    author = models.CharField(max_length=200)
+    
+    text = models.TextField()
+    
+    created_date = models.DateField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+    
+    #Función para que se guarde automaticamente.
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+    
+    #Función para ver el comentario como tal. 
+    def __str__(self):
+        return self.text
