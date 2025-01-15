@@ -19,19 +19,28 @@
                 <a class="navbar-brand" href="{% url 'index' %}">Tienda de Barrio</a>
                 <ul class="navbar-nav">
                 {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/" tabindex="-1">{{ user.username }}</a>
-                    </li>
-                    <li class="nav-item">
-                        <form action="/" method="post">
-                            {% csrf_token %}
-                            <button class="btn btn-outline-light me-2" tabindex="-2" type="submit">Logout</buttom>
-                        </form>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/" tabindex="-1">{{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <form action={% url 'logout'%} method="post">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-light me-2" tabindex="-2" type="submit">Logout</buttom>
+                            </form>
+                        </li>
+                
+                    {% else %}
 
-        {% endif %}
-        </ul>
-        </div>
+                    <li class="nav_item">
+                        <a class="btn btn-outline-light me-2"
+                        href="{% url 'login' %}"
+                        tabindex="-1"
+                        aria-disable="true">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+            </div>
+        
         </nav>
 
        {% block content %} 
