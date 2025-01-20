@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Product, Comment
 from .forms import CommentsForm
 
+# Función para el index
 def index(request):
     #Logica 
     products = Product.objects.all()
@@ -10,6 +11,7 @@ def index(request):
     return render(request, 'products/List_of_products.html', 
                   {'products': products})
 
+# Función para obtener el producto por separado.
 def get_product(request, id):
     #Logica 
     product = Product.objects.get(id=id)
@@ -21,6 +23,7 @@ def get_product(request, id):
                    'comments': comments,
                    'form': form})
 
+#Función para el formulario y enviar los comentarios.
 @login_required
 def add_new_comment(request, id):
     if request.method == 'POST':
@@ -29,7 +32,7 @@ def add_new_comment(request, id):
         
         if form.is_valid:
             user = request.user
-            product = Product.object.get(id=id)
+            product = Product.objects.get(id=id)
             
             new_comment = form.save(commit=False)
             new_comment.author = user 
