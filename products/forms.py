@@ -6,13 +6,13 @@ class CommentsForm(ModelForm):
     class Meta:
         model = Comment
         
-        fields = ('text', )
+        fields = ('text',)
 
         widgets = {
             'text': Textarea(attrs={
                 'class': 'form-control',
-                'area-label': 'comentarios'
-                'placeholder': 'Deja tu comentario'
+                'area-label': 'comentarios',
+                'placeholder': 'Deja tu comentario',
                 'id': 'formComment'
             }),
         }
