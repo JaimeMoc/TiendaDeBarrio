@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from .models import Product
+from .models import Product, Comment
+from .forms import CommentsForm
 
 def index(request):
     #Logica 
@@ -10,6 +11,12 @@ def index(request):
                   {'products': products})
 
 def get_product(request, id):
+    #Logica 
     product = Product.objects.get(id=id)
+    comments = Comment.objects.filter(product=id)
+    form = CommentsForm() 
+    
     return render(request, 'products/show_product.html', 
-                  {'product': product})
+                  {'product': product,
+                   'comments': comments,
+                   'form': form})
