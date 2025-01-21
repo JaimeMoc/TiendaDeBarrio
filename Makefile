@@ -7,3 +7,15 @@ makemigrations:
 
 migrate:
 	python manage.py migrate --settings=settings.local
+
+createsuperuser:
+	python manage.py createsuperuser --settings=settings.local
+
+test:
+	python manage.py test --settings=settings.local
+
+test-one:
+	python manage.py test $(TEST_NAME) --settings=settings.local
+
+shellplus:
+	python manage.py shell_plus --ipython --settings=settings.local
