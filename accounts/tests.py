@@ -1,8 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django_dynamic_fixture import G
-from unittest import skip
 
 class SigupViewTestCase(TestCase):
     
