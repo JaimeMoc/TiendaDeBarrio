@@ -12,12 +12,17 @@
                 <div class="jumbotron">
                     <h1 class="display-4">{{ product.name }}</h1>
                     <div class="price-container">
-                            <h5 class="card-title">
-                                {{ product.price }} USD
-                            </h5>
+                        <h5 class="card-title">
+                            {{ product.price }} USD
+                        </h5>
                     </div>
                     <hr class="my-4">
                     <p>{{ product.brand.description }}</p>
+                    <!-- Formulario para añadir al carrito -->
+                    <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -25,17 +30,17 @@
         <div class="row">
             <div class="col-5 comment-column">
                 <form action="{% url 'add_new_comment' id=product.id %}"
-                    method="post"
-                    class="post-form">
+                      method="post"
+                      class="post-form">
                     {% csrf_token %}
                     <div class="input-group mb-4">
                         {{ form.text }}
                     </div>
-                <button type="submit" class="save btn btn-dark">Enviar</button>
-            </form>
-        </div>
+                    <button type="submit" class="save btn btn-dark">Enviar</button>
+                </form>
+            </div>
         {% else %}
-        <h1>Inicia sesion para dejar tus cumentarios</h1>
+        <h1>Inicia sesión para dejar tus comentarios</h1>
             <a href="{% url 'login' %}">Login</a>
         {% endif %}
 
@@ -49,6 +54,5 @@
                 </div>
             {% endfor %}
         </div>
-
     </div>
 {% endblock content %}
