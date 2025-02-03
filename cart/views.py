@@ -6,7 +6,7 @@ from products.models import Product
 @login_required
 def cart_detail(request):
     cart, created = Cart.objects.get_or_create(user=request.user)
-    return render(request, 'carts/cartbase.html', {'cart': cart})
+    return render(request, 'carts/cart_detail.html', {'cart': cart})
 
 @login_required
 def add_to_cart(request, product_id):
