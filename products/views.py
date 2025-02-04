@@ -9,7 +9,7 @@ def index(request):
     #Logica 
     products = Product.objects.all()
     
-    return render(request, 'products/List_of_products.html', 
+    return render(request, 'products/list_of_products.html', 
                   {'products': products})
 
 # Función para obtener el producto por separado.

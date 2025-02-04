@@ -5,7 +5,7 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "OPTIONS": {
-            "read_default_file": "C:/Users/jaime/OneDrive/Escritorio/Django-Codigo-facilito/settings/my.cnf",
+            "read_default_file": "/home/suarezjaime/Documentos/TiendaDeBarrio/TiendaDeBarrio/settings/my.cnf",
         },
     }
 }
