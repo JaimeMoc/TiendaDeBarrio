@@ -5,12 +5,16 @@
         <div class="card-body">
             <h1 class="text-center mb-5">Signup</h1>
             
-            <form action={% url 'signup' %} method="post">
+            <form action="{% url 'signup' %}" method="post">
                 {% csrf_token %}
                 {{ form }}
-                <input class="btn submit-btn btn-tomato" type="submit" value="Sigup">
+                <input class="btn submit-btn btn-tomato" type="submit" value="Signup">
             </form>
             
+            <div class="text-center mt-3">
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-primary">Signup with Google</a>
+            </div>
+
         </div>
     </div>
 </div>

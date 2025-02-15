@@ -1,4 +1,4 @@
-{% extends 'base/base.html'%}
+{% extends 'base/base.html' %}
 
 {% block content %}
 <div class="login-container container">
@@ -6,13 +6,17 @@
         <div class="card-body">
             <h1 class="text-center mb-5">Login</h1>
 
-            <form action={% url 'login' %} method="POST">
+            <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                {{ form}}
+                {{ form }}
                 <input class="btn submit-btn btn-tomato" type="submit" value="Login">
             </form>
-        
-            <p class="text-center mt-3">¿No tienes una cuenta? <a href="{% url 'signup' %}">Registrarse</a></p> 
+            
+            <div class="text-center mt-3">
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-primary">Login with Google</a>
+            </div>
+            
+            <p class="text-center mt-3">Â¿No tienes una cuenta? <a href="{% url 'signup' %}">Registrarse</a></p> 
         </div>
     </div>
 </div>

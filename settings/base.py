@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
+import json
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'mathfilters',
+    'social_django',
     
     'products',
     'accounts',
@@ -67,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -112,7 +118,24 @@ STATICFILES_DIRS = [
     BASE_DIR / "staticfiles"
 ]
 
+LOGIN_REDIRECT_URL = 'index'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+GOOGLE_OAUTH2_JSON_PATH = os.path.join(BASE_DIR, 'client_secret_50177954510-clurj6egb3vpa9rp6mhrv3tbqhrb1o7u.apps.googleusercontent.com.json')
+
+# Leer el archivo JSON
+with open(GOOGLE_OAUTH2_JSON_PATH) as f:
+    GOOGLE_OAUTH2_CREDENTIALS = json.load(f)
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '50177954510-clurj6egb3vpa9rp6mhrv3tbqhrb1o7u.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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' 
+SOCIAL_AUTH_GOOGLE_OAUTH2_REDIRECT_URI = 'http://127.0.0.1:8000/auth/complete/google-oauth2/'
